@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title data-i18n="title">Завтраки — Hotel Sample</title>
+  <style>
+    :root{--bg:#ffffff;--card:#f8f9fb;--accent:#0f62fe;--muted:#6b7280;--radius:12px}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0;background:var(--bg);color:#0f172a}
+    header{padding:20px 16px 8px;display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    h1{font-size:18px;margin:0}
+    p.lead{margin:4px 0 0;color:var(--muted);font-size:13px}
+
+    main{padding:12px}
+    .card{background:var(--card);border-radius:var(--radius);padding:14px;margin-bottom:12px;box-shadow:0 1px 2px rgba(15,23,42,0.04)}
+
+    .section-title{display:flex;justify-content:space-between;align-items:center}
+    .section-title h2{font-size:15px;margin:0}
+    .actions{display:flex;gap:8px}
+    .btn{border:0;padding:8px 10px;border-radius:10px;font-size:13px;cursor:pointer}
+    .btn.outline{background:transparent;border:1px solid rgba(15,23,42,0.06)}
+    .btn.primary{background:var(--accent);color:#fff}
+
+    .menu{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+    @media(min-width:700px){.menu{grid-template-columns:repeat(2,1fr)}}
+
+    .dish{display:flex;gap:12px;align-items:flex-start}
+    .thumb{width:76px;height:64px;border-radius:8px;flex-shrink:0;background:#e6eefc;background-size:cover;background-position:center}
+    .meta{flex:1}
+    .meta h3{margin:0;font-size:15px}
+    .meta p{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .price{font-weight:700;color:var(--accent);font-size:14px;margin-top:6px}
+
+    .tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+    .tag{font-size:11px;padding:4px 8px;border-radius:999px;background:#eef2ff;color:#3730a3}
+
+    footer{padding:16px;text-align:center;color:var(--muted);font-size:13px}
+
+    .lang-switch{display:flex;gap:8px}
+    .lang-btn{background:transparent;border:1px solid transparent;padding:6px 10px;border-radius:8px;cursor:pointer}
+    .lang-btn.active{border-color:rgba(15,23,42,0.08);background:rgba(15,98,254,0.06)}
+
+    /* small print for printing */
+    @media print{header, .actions, footer, .lang-switch{display:none} body{background:#fff}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">HS</div>
+    <div style="flex:1">
+      <h1 data-i18n="header_h1">Завтраки — Hotel Sample</h1>
+      <p class="lead" data-i18n="lead">Сканируйте QR, чтобы открыть меню — все блюда с описанием и ценами</p>
+    </div>
+    <div class="lang-switch" aria-label="language switch">
+      <button class="lang-btn active" id="btn-ru" data-lang="ru">Рус</button>
+      <button class="lang-btn" id="btn-en" data-lang="en">EN</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="section-title">
+        <h2 data-i18n="hours">Сегодня — 07:00–10:30</h2>
+        <div class="actions">
+          <button class="btn outline" onclick="window.print()" data-i18n="print">Печать</button>
+        </div>
+      </div>
+
+      <div class="menu">
+
+        <article class="dish">
+          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=60')" aria-hidden="true"></div>
+          <div class="meta">
+            <h3 data-i18n="dish1_title">Омлет с травами</h3>
+            <p data-i18n="dish1_desc">Пышный омлет из трёх яиц, свежая зелень, томаты черри, подаётся с тостом из чиабатты.</p>
+            <div class="tags"><span class="tag" data-i18n="tag_veg">Вегетарианское</span><span class="tag" data-i18n="tag_gf">Без глютена по запросу</span></div>
+            <div class="price" data-i18n="dish1_price">₸ 1 800</div>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1505261154177-4c1b9d2400b1?w=800&q=60')" aria-hidden="true"></div>
+          <div class="meta">
+            <h3 data-i18n="dish2_title">Классические панкейки</h3>
+            <p data-i18n="dish2_desc">Три панкейка с мёдом и ягодным компотом. Можно добавить сливочное масло.</p>
+            <div class="tags"><span class="tag" data-i18n="tag_kids">Детское меню</span></div>
+            <div class="price" data-i18n="dish2_price">₸ 2 200</div>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&q=60')" aria-hidden="true"></div>
+          <div class="meta">
+            <h3 data-i18n="dish3_title">Салат с киноа и авокадо</h3>
+            <p data-i18n="dish3_desc">Киноа, свежие овощи, ломтики авокадо, лайм-винигрет, семена тыквы.</p>
+            <div class="tags"><span class="tag" data-i18n="tag_healthy">Здоровое</span><span class="tag" data-i18n="tag_vegan">Веган</span></div>
+            <div class="price" data-i18n="dish3_price">₸ 2 500</div>
+          </div>
+        </article>
+
+        <article class="dish">
+          <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1546549039-1b0b1b5b7a5a?w=800&q=60')" aria-hidden="true"></div>
+          <div class="meta">
+            <h3 data-i18n="dish4_title">Фреш-комбо</h3>
+            <p data-i18n="dish4_desc">Апельсиновый фреш (250 мл) + латте (250 мл) — выгодный набор.</p>
+            <div class="tags"><span class="tag" data-i18n="tag_drinks">Напитки</span></div>
+            <div class="price" data-i18n="dish4_price">₸ 1 400</div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0 0 8px 0" data-i18n="allergens_title">Аллергены</h3>
+      <p style="margin:0;color:var(--muted);font-size:13px" data-i18n="allergens_text">Пожалуйста, сообщите персоналу о любых аллергиях или пищевых предпочтениях. Мы можем адаптировать многие блюда.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div data-i18n="footer">Hotel Sample — завтрак включён. Если хотите меню на другом языке, сообщите на стойке ресепшн.</div>
+  </footer>
+
+  <script>
+    // Простая i18n — перевод текста по data-i18n атрибутам
+    const translations = {
+      ru: {
+        title: 'Завтраки — Hotel Sample',
+        header_h1: 'Завтраки — Hotel Sample',
+        lead: 'Сканируйте QR, чтобы открыть меню — все блюда с описанием и ценами',
+        hours: 'Сегодня — 07:00–10:30',
+        print: 'Печать',
+        dish1_title: 'Омлет с травами',
+        dish1_desc: 'Пышный омлет из трёх яиц, свежая зелень, томаты черри, подаётся с тостом из чиабатты.',
+        tag_veg: 'Вегетарианское', tag_gf: 'Без глютена по запросу', dish1_price: '₸ 1 800',
+        dish2_title: 'Классические панкейки', dish2_desc: 'Три панкейка с мёдом и ягодным компотом. Можно добавить сливочное масло.', tag_kids: 'Детское меню', dish2_price: '₸ 2 200',
+        dish3_title: 'Салат с киноа и авокадо', dish3_desc: 'Киноа, свежие овощи, ломтики авокадо, лайм-винигрет, семена тыквы.', tag_healthy: 'Здоровое', tag_vegan: 'Веган', dish3_price: '₸ 2 500',
+        dish4_title: 'Фреш-комбо', dish4_desc: 'Апельсиновый фреш (250 мл) + латте (250 мл) — выгодный набор.', tag_drinks: 'Напитки', dish4_price: '₸ 1 400',
+        allergens_title: 'Аллергены', allergens_text: 'Пожалуйста, сообщите персоналу о любых аллергиях или пищевых предпочтениях. Мы можем адаптировать многие блюда.',
+        footer: 'Hotel Sample — завтрак включён. Если хотите меню на другом языке, сообщите на стойке ресепшн.'
+      },
+      en: {
+        title: 'Breakfast — Hotel Sample',
+        header_h1: 'Breakfast — Hotel Sample',
+        lead: 'Scan the QR to open the menu — all dishes with descriptions and prices',
+        hours: 'Today — 07:00–10:30',
+        print: 'Print',
+        dish1_title: 'Herb Omelette',
+        dish1_desc: 'Fluffy three-egg omelette with fresh herbs, cherry tomatoes, served with a ciabatta toast.',
+        tag_veg: 'Vegetarian', tag_gf: 'Gluten-free on request', dish1_price: '₸ 1,800',
+        dish2_title: 'Classic Pancakes', dish2_desc: 'Three pancakes with honey and berry compote. Butter available on request.', tag_kids: 'Kids', dish2_price: '₸ 2,200',
+        dish3_title: 'Quinoa & Avocado Salad', dish3_desc: 'Quinoa, fresh vegetables, avocado slices, lime vinaigrette, pumpkin seeds.', tag_healthy: 'Healthy', tag_vegan: 'Vegan', dish3_price: '₸ 2,500',
+        dish4_title: 'Fresh Combo', dish4_desc: 'Orange juice (250 ml) + latte (250 ml) — combo offer.', tag_drinks: 'Drinks', dish4_price: '₸ 1,400',
+        allergens_title: 'Allergens', allergens_text: 'Please inform staff about any allergies or dietary preferences. Many dishes can be adapted.',
+        footer: 'Hotel Sample — breakfast included. If you would like the menu in another language, contact reception.'
+      }
+    };
+
+    function setLanguage(lang){
+      document.documentElement.lang = lang;
+      const nodes = document.querySelectorAll('[data-i18n]');
+      nodes.forEach(n => {
+        const key = n.getAttribute('data-i18n');
+        if(translations[lang] && translations[lang][key]){
+          if(n.tagName.toLowerCase()==='input' || n.tagName.toLowerCase()==='textarea'){
+            n.value = translations[lang][key];
+          } else {
+            n.textContent = translations[lang][key];
+          }
+        }
+      });
+      // toggle active class on buttons
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang')===lang));
+    }
+
+    // init
+    document.getElementById('btn-ru').addEventListener('click', ()=> setLanguage('ru'));
+    document.getElementById('btn-en').addEventListener('click', ()=> setLanguage('en'));
+
+    // auto detect language from browser (basic)
+    (function(){
+      const preferred = (navigator.language || navigator.userLanguage || 'ru').slice(0,2);
+      setLanguage(preferred === 'en' ? 'en' : 'ru');
+    })();
+  </script>
+</body>
+</html>
